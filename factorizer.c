@@ -22,11 +22,20 @@ int main(int argc, char** argv) {
     MPI_Comm_size(MPI_COMM_WORLD, &comm_sz);
     MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
     // zero is a special case that needs special handling
-    if (my_rank != 0 && num == 0) return 0;
+    if (num == 0) {
+        if (my_rank == 0) {
+            printf("0 1 ");
+            MPI_Finalize();
+        }
+        return 0;
+    }
+    if (my_rank == 0) {
+        printf("%llu\n", num);
+    }
 
     u64 x = 1;
     int shifts = 0;
-    while (num&~1llu) {
+    while (num&1llu) {
         num >>= 1;
         x <<= 1;
         shifts ++;
