@@ -46,7 +46,7 @@ int main(int argc, char** argv) {
     u64 *factors = malloc(sizeof(u64) * (factorsize+1));
 
     if (my_rank == 0) {
-        printf("%d\n", shifts);
+        printf("%llu %d\n", num, shifts);
         printf("%llu ", num*x);
         for (int i = 0; i < shifts; i ++) {
             printf("%llu ", 1ull << i);
