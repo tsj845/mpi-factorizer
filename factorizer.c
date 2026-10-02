@@ -47,13 +47,13 @@ int main(int argc, char** argv) {
 
     if (my_rank == 0) {
         printf("%d\n", shifts);
-        printf("%llu ", num);
+        printf("%llu ", num*x);
         for (int i = 0; i < shifts; i ++) {
             printf("%llu ", 1ull << i);
         }
         for (int q = 1; q < comm_sz; q ++) {
             MPI_Recv(factors, factorsize+1, MPI_UNSIGNED_LONG_LONG, q, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-            for (int i = 0; i < (int)factors[0]; i ++) {
+            for (u64 i = 0; i < factors[0]; i ++) {
                 printf("%llu ", x*factors[i+1]);
             }
         }
