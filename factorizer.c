@@ -48,8 +48,8 @@ int main(int argc, char** argv) {
     if (my_rank == 0) {
         // printf("%llu %d\n", num, shifts);
         // printf("%llu ", num*x);
-        for (int i = 0; i < shifts+1; i ++) {
-            printf("%llu %llu ", 1ull << i, num << i);
+        for (int i = 0; i <= shifts; i ++) {
+            printf("%llu %llu ", 1ull << i, num << (shifts-i));
         }
         for (int q = 1; q < comm_sz; q ++) {
             MPI_Recv(factors, factorsize+1, MPI_UNSIGNED_LONG_LONG, q, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
