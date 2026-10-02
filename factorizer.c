@@ -48,7 +48,7 @@ int main(int argc, char** argv) {
     if (my_rank == 0) {
         printf("%llu %d\n", num, shifts);
         printf("%llu ", num*x);
-        for (int i = 0; i < shifts; i ++) {
+        for (int i = 0; i < shifts+1; i ++) {
             printf("%llu ", 1ull << i);
         }
         for (int q = 1; q < comm_sz; q ++) {
