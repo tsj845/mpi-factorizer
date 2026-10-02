@@ -35,7 +35,7 @@ int main(int argc, char** argv) {
 
     u64 x = 1;
     int shifts = 0;
-    while (num&1llu) {
+    while (!(num&1llu)) {
         num >>= 1;
         x <<= 1;
         shifts ++;
